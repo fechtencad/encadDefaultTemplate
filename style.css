@@ -1,0 +1,60 @@
+/*
+ * Theme Name: Grundtemplate encad consulting GmbH
+ * Theme URI: http://www-encad-consulting.de
+ * Theme Description: Customized Responsive Bootstrap Wordpress Theme by encad consulting GmbH
+ * Author: Bernd Fecht (encad consulting GmbH)
+ * Author URI: http://www.encad-consulting.de
+ * Version: 1.0
+ * Tags: twitter bootstrap, encad consulting GmbH
+ * License: license.txt
+ * License URI:
+*/
+
+/* header styles */
+
+.bs-docs-header {
+	min-height: 100px;
+	max-height: 500px;
+	height: 200px;
+}
+
+
+/* nav-bar */
+
+.navbar {
+	border-radius: 0px;
+	margin-bottom: 0px;
+}
+
+/* main content styles */
+
+
+.wrapped {
+	margin: 0px auto;
+	min-height: 1px;
+	box-sizing: border-box;	
+}
+
+/* footer styles */
+
+.copyright {
+	margin: 0px auto;
+}
+
+.copright .container {
+	margin: 0px 0px;
+}
+
+/* Media Querys */
+
+@media (min-width: 1200px) {
+	.wrapped {
+		width: 66.66666667%;
+	}
+}
+
+@media (min-width: 768px) {
+	
+}
+
+
