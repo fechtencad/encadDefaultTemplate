@@ -16,6 +16,18 @@
 	<?php global $template_dir;
 	$template_dir = get_template_directory_uri(); ?>
 	
+	<!-- get options -->
+	<?php 
+		global $options;
+		foreach ($options as $value) {
+			if (get_option($value['id']) === FALSE) {
+				$$value['id'] = $value['std'];
+			}
+			else {
+				$$value['id'] = get_option( $value['id'] );
+			}
+	}?>
+	
 	<title><?php wp_title('&mdash;', true, 'right'); ?><?php bloginfo('name'); ?></title>
 	<meta charset="<?php bloginfo('charset'); ?>">
 	
