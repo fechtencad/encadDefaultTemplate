@@ -8,6 +8,11 @@
 ?>
 
 <?php 
+/**
+ * Load Theme Options 
+ *
+ */
+require_once ( get_template_directory() . '/includes/theme-options.php' );
 
 /**
  * Setup Theme Functions
@@ -34,9 +39,9 @@ add_action('after_setup_theme', 'encad_theme_setup');
 /**
  * Enqueue scripts & styles
  */
-if (!function_exists('bootstrapBasicEnqueueScripts')) {
+if (!function_exists('basic_bootstrapwp_enqueue_scripts')) {
 	
-	function bootstrapBasicEnqueueScripts() 
+	function basic_bootstrapwp_enqueue_scripts() 
 	{
 		wp_enqueue_style('bootstrap-style', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css');
 		wp_enqueue_style('bootstrap-theme-style', get_template_directory_uri() . '/bootstrap/css/bootstrap-theme.min.css');
@@ -47,9 +52,10 @@ if (!function_exists('bootstrapBasicEnqueueScripts')) {
 		wp_enqueue_script('bootstrap-script', get_template_directory_uri() . '/bootstrap/js/vendor/bootstrap.min.js');
 		wp_enqueue_script('main-script', get_template_directory_uri() . '/bootstrap/js/main.js');
 		wp_enqueue_style('bootstrap-basic-style', get_stylesheet_uri());
-	}// bootstrapBasicEnqueueScripts
+		
+	}// basic_bootstrapwp_enqueue_scripts
 }
-add_action('wp_enqueue_scripts', 'bootstrapBasicEnqueueScripts');
+add_action('wp_enqueue_scripts', 'basic_bootstrapwp_enqueue_scripts');
 
 /**
  * Define theme's widget areas.
@@ -111,11 +117,11 @@ function bootstrapwp_widgets_init() {
 add_action('init', 'bootstrapwp_widgets_init');
 
 
-/**
- * Load Theme Options 
- *
- */
-require_once ( get_template_directory() . '/includes/theme-options.php' );
+add_action( 'admin_enqueue_scripts', 'my_color_picker' );
+function my_color_picker() {
+	wp_enqueue_script( 'iris',get_template_directory_uri().'/js/iris.min.js' );
+	wp_enqueue_script( 'iris-init',get_template_directory_uri().'/js/iris-init.js' );
+}
 
 
 

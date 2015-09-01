@@ -23,9 +23,9 @@ class encadTemplateOptions
         // This page will be under "Settings"
         add_options_page(
             'Settings Admin', 
-            'Template Optionen', 
+            'Theme Optionen', 
             'manage_options', 
-            'my-setting-admin', 
+            'options-page', 
             array( $this, 'create_encad_template_options_page' )
         );
     }
@@ -36,15 +36,15 @@ class encadTemplateOptions
     public function create_encad_template_options_page()
     {
         // Set class property
-        $this->options = get_option( 'my_option_name' );
+        $this->options = get_option( 'options' );
         ?>
         <div class="wrap">
-            <h2>encad onsulting GmbH - Template Einstellungen</h2>           
-            <form method="post" action="options.php">
+            <?php screen_icon(); ?><h2>Theme Einstellungen für <?php bloginfo('name'); ?></h2>           
+            <form method="post" action="theme-options.php">
             <?php
                 // This prints out all hidden setting fields
-                settings_fields( 'my_option_group' );   
-                do_settings_sections( 'my-setting-admin' );
+                settings_fields( 'encad_option_group' );   
+                do_settings_sections( 'options-page' );
                 submit_button(); 
             ?>
             </form>
@@ -55,26 +55,35 @@ class encadTemplateOptions
     /**
      * Register and add settings
      */
-    public function page_init()
-    {        
+    public function page_init() {        
         register_setting(
-            'my_option_group', // Option group
-            'my_option_name', // Option name
+            'encad_option_group', // Option group
+            'options', // Option name
             array( $this, 'sanitize' ) // Sanitize
         );
 
         add_settings_section(
-            'setting_section_id', // ID
-            'encad Template Optionen', // Title
-            array( $this, 'print_section_info' ), // Callback
-            'my-setting-admin' // Page
+            'headerSection', // ID
+            'encad Theme Optionen', // Title
+            array( $this, 'printSectionInfo' ), // Callback
+            'options-page' // Page
         );  
+		
+		add_settings_field (
+			'color-picker', // ID
+			'Header Color', // Title
+			array( $this, 'createColorSection'), // Callback
+			'options-page',
+			'headerSection' // Section
+		);
+		
+		/**
 
         add_settings_field(
             'id_number', // ID
             'ID Number', // Title 
             array( $this, 'id_number_callback' ), // Callback
-            'my-setting-admin', // Page
+            'options-page', // Page
             'setting_section_id' // Section           
         );      
 
@@ -82,58 +91,53 @@ class encadTemplateOptions
             'title', 
             'Title', 
             array( $this, 'title_callback' ), 
-            'my-setting-admin', 
+            'options-page', 
             'setting_section_id'
-        );      
-    }
-
-    /**
-     * Sanitize each setting field as needed
-     *
-     * @param array $input Contains all settings fields as array keys
-     */
-    public function sanitize( $input )
-    {
-        $new_input = array();
-        if( isset( $input['id_number'] ) )
-            $new_input['id_number'] = absint( $input['id_number'] );
-
-        if( isset( $input['title'] ) )
-            $new_input['title'] = sanitize_text_field( $input['title'] );
-
-        return $new_input;
+        );    
+		*/
     }
 
     /** 
      * Print the Section text
      */
-    public function print_section_info()
-    {
+    public function printSectionInfo() {
         print 'Geben Sie Ihre Einstellungen für das Template der encad consulting GmbH hier ein:';
     }
-
+	
     /** 
      * Get the settings option array and print one of its values
      */
     public function id_number_callback()
     {
         printf(
-            '<input type="text" id="id_number" name="my_option_name[id_number]" value="%s" />',
+            '<input type="text" id="id_number" name="options[id_number]" value="%s" />',
             isset( $this->options['id_number'] ) ? esc_attr( $this->options['id_number']) : ''
         );
     }
+	
+	
+	public function createColorSection() {
+		?>
+		Color: <input type="text" class="color-picker" name="options[color-picker]" id='color-picker' value="#cc0000" />
+		<?php
+	}
+	
+	
 
     /** 
      * Get the settings option array and print one of its values
      */
-    public function title_callback()
-    {
+    public function title_callback() {
         printf(
-            '<input type="text" id="title" name="my_option_name[title]" value="%s" />',
+            '<input type="text" id="title" name="options[title]" value="%s" />',
             isset( $this->options['title'] ) ? esc_attr( $this->options['title']) : ''
         );
     }
+	
+	public function get_options() {
+		return $options;
+	}
 }
 
 if( is_admin() )
-    $my_settings_page = new encadTemplateOptions();
+    $template_settings = new encadTemplateOptions();
