@@ -101,41 +101,39 @@ function bootstrapwp_widgets_init() {
             )
     );
     
-        register_sidebar(
-            array(
-                'name' => __('Footer Spalte 4', 'encad'),
-                'id' => 'footer-column-4',
-                'description' => __('Footer Spalte 4', 'encad'),
-                'before_widget' => '<aside><div id="%1$s" class="widget %2$s">',
-                'after_widget' => '</div></aside>',
-                'before_title' => '<h4>',
-                'after_title' => '</h4>'
-            )
-    );
-        
+	register_sidebar(
+		array(
+			'name' => __('Footer Spalte 4', 'encad'),
+			'id' => 'footer-column-4',
+			'description' => __('Footer Spalte 4', 'encad'),
+			'before_widget' => '<aside><div id="%1$s" class="widget %2$s">',
+			'after_widget' => '</div></aside>',
+			'before_title' => '<h4>',
+			'after_title' => '</h4>'
+		)
+	);        
 }
 add_action('init', 'bootstrapwp_widgets_init');
 
-
-add_action( 'admin_enqueue_scripts', 'my_color_picker' );
-function my_color_picker() {
-	wp_enqueue_script( 'iris',get_template_directory_uri().'/js/iris.min.js' );
-	wp_enqueue_script( 'iris-init',get_template_directory_uri().'/js/iris-init.js' );
+/**
+ * Load color-picker files.
+ *
+ */
+function encad_color_picker() {
+	wp_enqueue_script('iris', get_template_directory_uri().'/includes/js/iris.min.js');
+	wp_enqueue_script('iris-init', get_template_directory_uri().'/js/iris-init.js');
 }
+add_action('admin_enqueue_scripts', 'encad_color_picker');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+/**
+ * Load image-picker files.
+ *
+ */
+function encad_image_picker() {
+	wp_enqueue_media();
+	wp_enqueue_script('meadia_picker', get_template_directory_uri().'/js/media_picker.js', array('jquery'), '1.0', true);
+}
+add_action('admin_enqueue_scripts', 'encad_image_picker');
 
 ?>
 
