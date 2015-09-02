@@ -91,6 +91,30 @@ class encadTemplateOptions
 			'options-page',
 			'header_section'
 		);
+		
+		add_settings_field(
+			'header_wrapped',
+			'Wrapped Header',
+			array( $this, 'create_wrapped_header_checkbox'),
+			'options-page',
+			'header_section'
+		);
+		
+		add_settings_section(
+            'main_page_section', // ID
+            'Main Page', // Title
+            array( $this, 'print_section_info' ), // Callback
+            'options-page' // Page
+        ); 
+
+		add_settings_field(
+			'wrapped',
+			'Wrapped Website',
+			array( $this, 'create_wrapped_website_checkbox'),
+			'options-page',
+			'main_page_section'
+		);
+		
     }
 	
 	 /**
@@ -111,6 +135,12 @@ class encadTemplateOptions
 		if( isset( $input['header_logo_image_url'] ) )
             $new_input['header_logo_image_url'] = sanitize_text_field( $input['header_logo_image_url'] );
 
+		if( isset( $input['header_wrapped'] ) )
+            $new_input['header_wrapped'] = sanitize_text_field( $input['header_wrapped'] );
+		
+		if( isset( $input['wrapped'] ) )
+            $new_input['wrapped'] = sanitize_text_field( $input['wrapped'] );
+		
         return $new_input;
     }
 
@@ -134,18 +164,36 @@ class encadTemplateOptions
 	}
 	
 	public function create_header_background_media_browser_field() {
-		printf(
-			'<input type="text" id="header_background_image_url" name="encad_options[header_background_image_url]" value="%s"/>
+		printf(		
+			'<div><img src="%s" style="max-width: 200px"/></div>
+			<input type="text" id="header_background_image_url" name="encad_options[header_background_image_url]" value="%s"/>
 			<a href="#" id="header_background_image" class="button image_picker">Select Image</a>',
+			isset( $this->options['header_background_image_url'] ) ? esc_attr( $this->options['header_background_image_url']) : '',
 			isset( $this->options['header_background_image_url'] ) ? esc_attr( $this->options['header_background_image_url']) : ''
 		);
 	}
 	
 	public function create_header_logo_media_browser_field() {
 		printf(
-			'<input type="text" id="header_logo_image_url" name="encad_options[header_logo_image_url]" value="%s"/>
+			'<div><img src="%s" style="max-width: 200px"/></div>
+			<input type="text" id="header_logo_image_url" name="encad_options[header_logo_image_url]" value="%s"/>
 			<a href="#" id="header_logo_image" class="button image_picker">Select Image</a>',
+			isset( $this->options['header_logo_image_url'] ) ? esc_attr( $this->options['header_logo_image_url']) : '',
 			isset( $this->options['header_logo_image_url'] ) ? esc_attr( $this->options['header_logo_image_url']) : ''
+		);
+	}
+	
+	public function create_wrapped_header_checkbox() {
+		printf(
+			'<input type="checkbox" id="header_wrapped" name="encad_options[header_wrapped]" %s />',
+			checked( isset( $this->options['header_wrapped'] ), true, false )
+		);
+	}
+	
+	public function create_wrapped_website_checkbox() {
+		printf(
+			'<input type="checkbox" id="wrapped" name="encad_options[wrapped]" %s />',
+			checked( isset( $this->options['wrapped'] ), true, false )
 		);
 	}
 }

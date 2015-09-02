@@ -10,7 +10,7 @@
 <?php get_header(); ?>
 
 <div class="main-content">
-		<div class="jumbotron wrapped">
+		<div class="jumbotron <?php if($options['wrapped'] == 'on')echo ('wrapped') ?>">
 			<div class="container">
 				<?php
 					if (have_posts()) : while (have_posts()) : the_post();

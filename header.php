@@ -14,10 +14,12 @@
 
 <head>	
 	<?php global $template_dir;
-	$template_dir = get_template_directory_uri(); ?>
+		$template_dir = get_template_directory_uri(); 
+	?>
 	
 	<!-- get options -->
 	<?php 		
+		global $options;
 		$options = get_option( 'encad_options' );
 	?>
 	
@@ -35,7 +37,7 @@
 
 	<div class="bs-docs-header" id="header-bar" <?php if($options['header_color'] != '')echo ('style="background:'.$options['header_color'].'"') ?>>
 		<div class="container">
-			<div class="header-images wrapped">
+			<div class="header-images <?php if($options['header_wrapped'] == 'on')echo ('wrapped') ?>">
 				<div class="slider-area" id="header-slider" <?php if($options['header_background_image_url'] != '')echo ('style="background-image:url('.$options['header_background_image_url'].')"') ?>>
 					<div class="logo" id="logo">	
 						<a href="<?php echo home_url( '/' ); ?>" rel="home">
