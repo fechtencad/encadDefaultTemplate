@@ -21,6 +21,7 @@
 	<?php 		
 		global $options;
 		$options = get_option( 'encad_options' );
+		require_once ( get_template_directory() . '/options-queries.php');
 	?>
 	
 	<title><?php wp_title('&mdash;', true, 'right'); ?><?php bloginfo('name'); ?></title>
@@ -35,18 +36,14 @@
 
 <header id="header">
 
-	<div class="bs-docs-header" id="header-bar" <?php if($options['header_color'] != '')echo ('style="background:'.$options['header_color'].'"') ?>>
+	<div class="bs-docs-header" id="header-bar">
 		<div class="container">
 			<div class="header-images <?php if($options['header_wrapped'] == 'on')echo ('wrapped') ?>">
-				<div class="slider-area" id="header-slider" <?php if($options['header_background_image_url'] != '')echo ('style="background-image:url('.$options['header_background_image_url'].')"') ?>>
+				<div class="slider-area" id="header-slider">
 					<div class="logo" id="logo">	
 						<a href="<?php echo home_url( '/' ); ?>" rel="home">
 							<span class="helper"></span>
-							<?php 
-								if($options['header_logo_image_url'] != '') {								
-									echo '<img src="'.$options['header_logo_image_url'].'"/>';
-								}
-							?>
+								<img class="logo-image"/>
 						</a>
 					</div><!-- ./logo -->
 				</div><!-- ./slider-area -->
@@ -63,7 +60,7 @@
             <span class="icon-bar"></span>
           </button>
         </div>
-        <div id="navbar" class="navbar-collapse collapse wrapped">
+        <div id="navbar" class="navbar-collapse collapse  <?php if($options['header_wrapped'] == 'on')echo ('wrapped') ?>">
 			<!-- register nav_walker menu -->
 			<?php                
 				if ( has_nav_menu( 'main-menu' ) ) {      

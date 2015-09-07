@@ -63,6 +63,13 @@
 .navbar {
 	border-radius: 0px;
 	margin-bottom: 0px;
+	max-height: 100px;
+	min-height: 10px;
+}
+
+.navbar-nav>li>a  {
+	padding: 0px 15px; 
+	max-height: 99px;
 }
 
 /* main content styles */

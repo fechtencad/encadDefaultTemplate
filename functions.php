@@ -12,7 +12,7 @@
  * Load Theme Options 
  *
  */
-require_once ( get_template_directory() . '/includes/theme-options.php' );
+require_once ( get_template_directory() . '/includes/theme-options.php');
 
 /**
  * Setup Theme Functions
