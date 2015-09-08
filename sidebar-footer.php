@@ -6,38 +6,36 @@
  * @subpackage encadTemplate
  */
 ?>		
-	
-<div class="widgets-area wrapped">
-	<div class="cotnainer">
-		<div class="row">
-			 <div class="col-md-3">
-                <?php
-                if (function_exists('dynamic_sidebar')) {
-                    dynamic_sidebar("footer-column-1");
-                }
-                ?>
-            </div>
-            <div class="col-md-3">
-                <?php
-                if (function_exists('dynamic_sidebar')) {
-                    dynamic_sidebar("footer-column-2");
-                }
-                ?>
-            </div>
-            <div class="col-md-3">
-                <?php
-                if (function_exists('dynamic_sidebar')) {
-                    dynamic_sidebar("footer-column-3");
-                }
-                ?>
-            </div>
-             <div class="col-md-3">
-                <?php
-                if (function_exists('dynamic_sidebar')) {
-                    dynamic_sidebar("footer-column-4");
-                }
-                ?>
-            </div>
-		</div><!-- ./row -->
-	</div><!-- ./container -->	
-</div><!-- ./widgets-area -->
+
+<?php
+	global $options;
+	$options = get_option( 'encad_options' );
+?>	
+
+<?php
+	$widget_amount = $options['widgets'];
+	if ($widget_amount == 0) {
+		return;
+	}
+	else {	
+		
+		printf(
+			'<div class="widgets-area %s">',
+			($options['wrapped'] == 'on' ? "wrapped" : "")
+		);	
+		$col_index = 12 / $widget_amount;
+		echo '<div class="row">';
+				
+		for ($i = 1; $i <= intval($widget_amount); $i++) {				
+			echo '<div class="col-md-'.$col_index.'">';
+			if (function_exists('dynamic_sidebar')) {
+				dynamic_sidebar("footer-column-$i");
+			}
+			echo '</div><!-- ./col -->';
+		}
+
+		echo '</div><!-- ./row -->';
+		echo '</div><!-- ./widgets-area -->';
+	}
+?>
+			

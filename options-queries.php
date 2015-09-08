@@ -18,12 +18,16 @@ function set_header_styles() {
 	$image_color_url = $options['header_background_image_color_url'];
 	$image_url = $options['header_background_image_url'];
 	$logo_url = $options['header_logo_image_url'] ;
+	$height = $options['header_height'];
 	
 	printf(
 		"
 		<style>
-			.bs-docs-header { background: $color;}
-			.bs-docs-header { background-image: url($image_color_url);}
+			.bs-docs-header { 
+				background: $color; 
+				height: ".$height."px;
+				background-image: url($image_color_url);
+			}
 			.slider-area { background-image: url($image_url);}
 			.logo-image { content: url($logo_url);}
 		</style>
@@ -150,8 +154,61 @@ function set_dropdown_menu_styles() {
 	);
 }
 add_action('wp_head', 'set_dropdown_menu_styles');
-  /*
- * Main Page
+
+/**
+* Main Page
+*/
+ 
+ function set_main_page_styles() {
+	$options = get_option( 'encad_options' );
+	
+	$color = $options['main_color'];
+	
+	printf (
+		"
+		<style>
+			.jumbotron {
+				background: $color;
+			}
+		</style>
+		"
+	);
+ }
+ add_action('wp_head', 'set_main_page_styles');
+ 
+ /**
+ * Footer
+ */
+ function set_footer_styles() {
+	$options = get_option( 'encad_options' );
+	
+	$color = $options['footer_color'];
+	$gradient_color = addHexColor($color, '080808');
+	$font_color = $options['footer_font_color'];
+	$border_color = $options['footer_border_color'];
+	
+	printf (
+		"
+		<style>
+			.copyright {
+				background-color: $color;
+				background-image: linear-gradient(to bottom, $gradient_color 0, $color 100%%);
+				background-image: -webkit-linear-gradient(top, $gradient_color 0, $color 100%%);
+				background-image: -o-linear-gradient(top, $gradient_color 0, $color 100%%);
+				background-image: -moz-linear-gradient(top, $gradient_color 0, $color 100%%);
+				border-color: $border_color;
+			}
+			.footer-content {
+				color: $font_color;
+			}
+		</style>
+		"
+	);
+ }
+ add_action('wp_head', 'set_footer_styles');
+ 
+ /*
+ * Generall Functions
  */
  
 function addHexColor($c1, $c2) {
