@@ -14,7 +14,15 @@
 
 <head>	
 	<?php global $template_dir;
-	$template_dir = get_template_directory_uri(); ?>
+		$template_dir = get_template_directory_uri(); 
+	?>
+	
+	<!-- get options -->
+	<?php 		
+		global $options;
+		$options = get_option( 'encad_options' );
+		require_once ( get_template_directory() . '/options-queries.php');
+	?>
 	
 	<title><?php wp_title('&mdash;', true, 'right'); ?><?php bloginfo('name'); ?></title>
 	<meta charset="<?php bloginfo('charset'); ?>">
@@ -30,9 +38,13 @@
 
 	<div class="bs-docs-header" id="header-bar">
 		<div class="container">
-			<div class="header-images">
+			<div class="header-images <?php if($options['header_wrapped'] == 'on')echo ('wrapped') ?>">
 				<div class="slider-area" id="header-slider">
-					<div class="logo" id="logo">
+					<div class="logo" id="logo">	
+						<a href="<?php echo home_url( '/' ); ?>" rel="home">
+							<span class="helper"></span>
+								<img class="logo-image"/>
+						</a>
 					</div><!-- ./logo -->
 				</div><!-- ./slider-area -->
 			</div><!-- ./header-images -->
@@ -48,7 +60,7 @@
             <span class="icon-bar"></span>
           </button>
         </div>
-        <div id="navbar" class="navbar-collapse collapse wrapped">
+        <div id="navbar" class="navbar-collapse collapse  <?php if($options['header_wrapped'] == 'on')echo ('wrapped') ?>">
 			<!-- register nav_walker menu -->
 			<?php                
 				if ( has_nav_menu( 'main-menu' ) ) {      
