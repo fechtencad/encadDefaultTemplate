@@ -63,7 +63,8 @@ function set_menu_styles() {
 				background-image: -o-linear-gradient(top, $color_gradient 0, $color 100%%);
 				background-image: -moz-linear-gradient(top, $color_gradient 0, $color 100%%);
 				border-color: $border_color;
-			}			
+			}
+			
 			.navbar .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.active>a{
 				background-color: $selected_color;
 				background-image: linear-gradient(to bottom, $selected_gradient_color 0, $selected_color 100%%);
@@ -159,16 +160,20 @@ add_action('wp_head', 'set_dropdown_menu_styles');
 * Main Page
 */
  
- function set_main_page_styles() {
+function set_main_page_styles() {
 	$options = get_option( 'encad_options' );
 	
 	$color = $options['main_color'];
+	$blockquote_color = addHexColor($color, '#101010');
 	
 	printf (
 		"
 		<style>
 			.jumbotron {
 				background: $color;
+			}
+			blockquote {
+				border-left-color: $blockquote_color;
 			}
 		</style>
 		"

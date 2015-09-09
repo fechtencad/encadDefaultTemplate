@@ -54,7 +54,8 @@ class encadTemplateOptions
     /**
      * Register and add settings
      */
-    public function page_init() {        
+    public function page_init() {  
+	
         register_setting(
             'encad_option_group', // Option group
             'encad_options', // Option name
@@ -267,6 +268,14 @@ class encadTemplateOptions
 		);
 		
 		add_settings_field(
+			'side_menu',
+			'Side-Menu',
+			array( $this, 'create_side_menu_checkbox'),
+			'options-page',
+			'main_page_section'
+		);
+		
+		add_settings_field(
 			'widgets',
 			'Amount Widgets',
 			array( $this, 'create_widgets_select'),
@@ -474,6 +483,9 @@ class encadTemplateOptions
 		
 		if( isset( $input['wrapped'] ) )
             $new_input['wrapped'] = sanitize_text_field( $input['wrapped'] );
+		
+		if( isset( $input['side_menu'] ) )
+            $new_input['side_menu'] = sanitize_text_field( $input['side_menu'] );
 		
 		if( isset( $input['main_color'] ) )
             $new_input['main_color'] = sanitize_text_field( $input['main_color'] );
@@ -712,6 +724,13 @@ class encadTemplateOptions
 		);
 	}
 	
+	public function create_side_menu_checkbox() {
+		printf(
+			'<input type="checkbox" id="side_menu" name="encad_options[side_menu]" %s />',
+			checked( isset( $this->options['side_menu'] ), true, false )
+		);
+	}
+	
 	public function create_main_color_field() {
 		printf(
 			'<input type="text" id="main_color" class="color-picker" name="encad_options[main_color]" value="%s" style="background:%s" />default: #eee',
@@ -764,7 +783,7 @@ class encadTemplateOptions
 	
 	public function create_google_analytics_field() {
 		printf(
-			'<input style="width: 40%%; height: 130px;" type="text" id="google_analytics" name="encad_options[google_analytics]" value="%s"/>
+			'<textarea style="width: 40%%; height: 130px;" id="google_analytics" name="encad_options[google_analytics]" >%s</textarea>
 			<br>(place Google Analytics Code here)',
 			isset( $this->options['google_analytics'] ) ? esc_attr( $this->options['google_analytics']) : ''
 		);
