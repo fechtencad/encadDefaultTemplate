@@ -17,14 +17,9 @@
 	if ($widget_amount == 0) {
 		return;
 	}
-	else {	
-		
-		printf(
-			'<div class="widgets-area %s">',
-			($options['wrapped'] == 'on' ? "wrapped" : "")
-		);	
+	else {
 		$col_index = 12 / $widget_amount;
-		echo '<div class="row">';
+		echo '<div class="widgets-area"><div class="row">';
 				
 		for ($i = 1; $i <= intval($widget_amount); $i++) {				
 			echo '<div class="col-md-'.$col_index.'">';

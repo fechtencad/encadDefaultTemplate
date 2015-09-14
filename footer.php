@@ -5,10 +5,7 @@
  * @package WordPress
  * @subpackage encadTemplate
  */
-?>	
-	
-<?php get_sidebar('footer'); ?>
-
+?>
 <footer>
 	<div class="copyright row">
 		<div class="col-xs-12 col-sm-12 col-md-6 text-left footer-container">
