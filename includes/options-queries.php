@@ -4,7 +4,7 @@
  * Description: PHP functions to set styles passed from options-page
  * @author Bernd Fecht (encad consulting GmbH)
  * @package WordPress
- * @subpackage encadTemplate
+ * @subpackage encadDefaultTemplate
  */
  
  /*
