@@ -19,6 +19,7 @@ function set_header_styles() {
 	$image_url = $options['header_background_image_url'];
 	$logo_url = $options['header_logo_image_url'] ;
 	$height = $options['header_height'];
+	$shadow = $options['header_shadow'];
 	
 	printf(
 		"
@@ -28,11 +29,25 @@ function set_header_styles() {
 				height: ".$height."px;
 				background-image: url($image_color_url);
 			}
-			.slider-area { background-image: url($image_url);}
-			.logo-image { content: url($logo_url);}
+			.slider-area { 
+				background-image: url($image_url);
+			}
+			
+			.logo-image { 
+				content: url($logo_url);
+			}			
 		</style>
 		"
 	);	
+	
+	if ($shadow == "on") {
+		echo "<style>#top-navigation {
+			-webkit-box-shadow: 0px 3px 9px -1px rgba(0,0,0,0.57);
+			-moz-box-shadow: 0px 3px 9px -1px rgba(0,0,0,0.57);
+			box-shadow: 0px 3px 9px -1px rgba(0,0,0,0.57);
+			}
+			</style>";
+	}
 }
 add_action('wp_head', 'set_header_styles');
 
@@ -63,6 +78,10 @@ function set_menu_styles() {
 				background-image: -o-linear-gradient(top, $color_gradient 0, $color 100%%);
 				background-image: -moz-linear-gradient(top, $color_gradient 0, $color 100%%);
 				border-color: $border_color;
+			}
+			
+			.side-menu-badge {
+				height: ".$height."px;
 			}
 			
 			.navbar .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.active>a{
@@ -157,6 +176,48 @@ function set_dropdown_menu_styles() {
 add_action('wp_head', 'set_dropdown_menu_styles');
 
 /**
+* Side-Menu
+*/
+
+function set_side_menu_styles() {
+	$options = get_option( 'encad_options' );
+	
+	$font_color = $options['side_menu_font_color'];
+	$hover_font_color = $options['side_menu_hover_font_color'];
+	$active_font_color = $options['side_menu_active_font_color'];
+	$font_size = $options['side_menu_font_size'];
+	$list_style = $options['side_menu_list_style'];
+	$list_style_image = $options['side_menu_list_style_image_url'];
+	printf(
+		"
+		<style>
+			.navbar-side >li>a {
+				color: $font_color !important;
+				font-size: ".$font_size."px;
+			}
+			
+			.navbar-side >li>a:hover, .navbar-side >li>a:focus {
+				color: $hover_font_color !important;
+			}
+			
+			.navbar-side .active>a, .navbar-side .active>a:hover, .navbar-side .active>a:focus {
+				color: $active_font_color !important;
+			}
+			
+			.navbar-side {
+				list-style-type: $list_style;
+			}
+		</style>
+		"
+	);
+	if ($list_style_image != '') {
+		echo "<style>.navbar-side{ list-style-image: url($list_style_image); list-style-type: none;}</style>";
+	}
+		
+}
+add_action('wp_head', 'set_side_menu_styles');
+
+/**
 * Main Page
 */
  
@@ -165,6 +226,8 @@ function set_main_page_styles() {
 	
 	$color = $options['main_color'];
 	$blockquote_color = addHexColor($color, '#101010');
+	$shadow = $options['shadow'];
+	$title_color = $options['title_font_color'];
 	
 	printf (
 		"
@@ -175,9 +238,22 @@ function set_main_page_styles() {
 			blockquote {
 				border-left-color: $blockquote_color;
 			}
+			
+			.jumbotron h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+				color: $title_color;
+			}
 		</style>
 		"
 	);
+	
+	if ($shadow == "on") {
+		echo "<style>.jumbotron{
+			-webkit-box-shadow: -3px 0px 12px -1px rgba(0,0,0,0.57), 3px 0px 12px -1px rgba(0,0,0,0.57);
+			-moz-box-shadow: -3px 0px 12px -1px rgba(0,0,0,0.57), 3px 0px 12px -1px rgba(0,0,0,0.57);
+			box-shadow: -3px 0px 12px -1px rgba(0,0,0,0.57), 3px 0px 12px -1px rgba(0,0,0,0.57);
+			}
+			</style>";
+	}	
  }
  add_action('wp_head', 'set_main_page_styles');
  

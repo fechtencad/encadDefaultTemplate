@@ -113,6 +113,14 @@ class encadTemplateOptions
 		);
 		
 		add_settings_field(
+			'header_shadow',
+			'Header Shadow',
+			array( $this, 'create_header_shadow_checkbox'),
+			'options-page',
+			'header_section'
+		);
+		
+		add_settings_field(
 			'header_height',
 			'Header Height',
 			array($this, 'create_header_height_field'),
@@ -242,6 +250,64 @@ class encadTemplateOptions
 			'dropdown_menu_section' // Section
 		);
 		
+		// Side Menu
+		
+		add_settings_section(
+            'side_menu_section', // ID
+            'Side Menu', // Title
+            array( $this, 'print_section_info' ), // Callback
+            'options-page' // Page
+        ); 
+		
+		add_settings_field(
+			'side_menu_font_color', // ID
+			'Font Color', // Title
+			array( $this, 'create_side_menu_font_color_field'), // Callback
+			'options-page', // Page
+			'side_menu_section' // Section
+		);
+		
+		add_settings_field(
+			'side_menu_hover_font_color', // ID
+			'Hover Font Color', // Title
+			array( $this, 'create_side_menu_hover_font_color_field'), // Callback
+			'options-page', // Page
+			'side_menu_section' // Section
+		);
+		
+		add_settings_field(
+			'side_menu_active_font_color', // ID
+			'Active Font Color', // Title
+			array( $this, 'create_side_menu_active_font_color_field'), // Callback
+			'options-page', // Page
+			'side_menu_section' // Section
+		);
+		
+		add_settings_field(
+			'side_menu_font_size', // ID
+			'Font Size', // Title
+			array( $this, 'create_side_menu_font_size_field'), // Callback
+			'options-page', // Page
+			'side_menu_section' // Section
+		);
+		
+		add_settings_field(
+			'side_menu_list_style', // ID
+			'List Style', // Title
+			array( $this, 'create_side_menu_list_style_select'), // Callback
+			'options-page', // Page
+			'side_menu_section' // Section
+		);	
+
+		add_settings_field(
+			'side_menu_list_style_image_url', // ID
+			'List Style Image', // Title
+			array( $this, 'create_side_menu_list_style_media_browser_field'), // Callback
+			'options-page', // Page
+			'side_menu_section' // Section
+		);	
+		
+		
 		// Main Page
 		
 		add_settings_section(
@@ -258,6 +324,14 @@ class encadTemplateOptions
 			'options-page', // Page
 			'main_page_section' // Section
 		);
+		
+		add_settings_field(
+			'title_font_color', // ID
+			'Title Font Color', // Title
+			array( $this, 'create_title_font_color_field'), // Callback
+			'options-page', // Page
+			'main_page_section' // Section
+		);
 
 		add_settings_field(
 			'wrapped',
@@ -271,6 +345,14 @@ class encadTemplateOptions
 			'side_menu',
 			'Side-Menu',
 			array( $this, 'create_side_menu_checkbox'),
+			'options-page',
+			'main_page_section'
+		);
+		
+		add_settings_field(
+			'shadow',
+			'Shadow',
+			array( $this, 'create_shadow_checkbox'),
 			'options-page',
 			'main_page_section'
 		);
@@ -433,6 +515,9 @@ class encadTemplateOptions
 		if( isset( $input['header_wrapped'] ) )
             $new_input['header_wrapped'] = sanitize_text_field( $input['header_wrapped'] );
 		
+		if( isset( $input['header_shadow'] ) )
+            $new_input['header_shadow'] = sanitize_text_field( $input['header_shadow'] );
+		
 		if( isset( $input['header_height'] ) )
             $new_input['header_height'] = sanitize_text_field( $input['header_height'] );
 		
@@ -477,7 +562,27 @@ class encadTemplateOptions
             $new_input['dropdown_menu_font_active_color'] = sanitize_text_field( $input['dropdown_menu_font_active_color'] );		
 		
 		if( isset( $input['dropdown_menu_font_hover_color'] ) )
-            $new_input['dropdown_menu_font_hover_color'] = sanitize_text_field( $input['dropdown_menu_font_hover_color'] );		
+            $new_input['dropdown_menu_font_hover_color'] = sanitize_text_field( $input['dropdown_menu_font_hover_color'] );	
+
+		// Side-Menu
+		
+		if( isset( $input['side_menu_font_color'] ) )
+            $new_input['side_menu_font_color'] = sanitize_text_field( $input['side_menu_font_color'] );
+		
+		if( isset( $input['side_menu_hover_font_color'] ) )
+            $new_input['side_menu_hover_font_color'] = sanitize_text_field( $input['side_menu_hover_font_color'] );
+		
+		if( isset( $input['side_menu_active_font_color'] ) )
+            $new_input['side_menu_active_font_color'] = sanitize_text_field( $input['side_menu_active_font_color'] );
+		
+		if( isset( $input['side_menu_font_size'] ) )
+            $new_input['side_menu_font_size'] = sanitize_text_field( $input['side_menu_font_size'] );
+		
+		if( isset( $input['side_menu_list_style'] ) )
+            $new_input['side_menu_list_style'] = sanitize_text_field( $input['side_menu_list_style'] );
+		
+		if( isset( $input['side_menu_list_style_image_url'] ) )
+            $new_input['side_menu_list_style_image_url'] = sanitize_text_field( $input['side_menu_list_style_image_url'] );
 		
 		// Main Page
 		
@@ -487,8 +592,14 @@ class encadTemplateOptions
 		if( isset( $input['side_menu'] ) )
             $new_input['side_menu'] = sanitize_text_field( $input['side_menu'] );
 		
+		if( isset( $input['shadow'] ) )
+            $new_input['shadow'] = sanitize_text_field( $input['shadow'] );
+		
 		if( isset( $input['main_color'] ) )
             $new_input['main_color'] = sanitize_text_field( $input['main_color'] );
+		
+		if( isset( $input['title_font_color'] ) )
+            $new_input['title_font_color'] = sanitize_text_field( $input['title_font_color'] );
 		
 		if( isset( $input['widgets'] ) )
             $new_input['widgets'] = sanitize_text_field( $input['widgets'] );
@@ -595,6 +706,13 @@ class encadTemplateOptions
 		);
 	}	
 	
+	public function create_header_shadow_checkbox() {
+		printf(
+			'<input type="checkbox" id="header_shadow" name="encad_options[header_shadow]" %s />',
+			checked( isset( $this->options['header_shadow'] ), true, false )
+		);
+	}
+	
 	public function create_header_height_field() {
 		printf(
 			'<input type="text" id="header_height" name="encad_options[header_height]" value="%s"/>px (default: 200px)',
@@ -611,6 +729,14 @@ class encadTemplateOptions
 			'<input type="text" id="menu_color" class="color-picker" name="encad_options[menu_color]" value="%s" style="background:%s" />default: #515151',
 			isset( $this->options['menu_color'] ) ? esc_attr( $this->options['menu_color']) : '#515151',
 			isset( $this->options['menu_color'] ) ? esc_attr( $this->options['menu_color']) : '#515151'
+		);
+	}
+	
+	public function create_header_font_color_field() {
+		printf(
+			'<input type="text" id="header_font" class="color-picker" name="encad_options[header_font]" value="%s" style="background:%s" />default: #000',
+			isset( $this->options['header_font'] ) ? esc_attr( $this->options['header_font']) : '#000',
+			isset( $this->options['header_font'] ) ? esc_attr( $this->options['header_font']) : '#000'
 		);
 	}
 	
@@ -714,6 +840,60 @@ class encadTemplateOptions
 	}	
 	
 	/**
+	* Side-Menu
+	*/
+	
+	public function create_side_menu_font_color_field() {
+		printf(
+			'<input type="text" id="side_menu_font_color" class="color-picker" name="encad_options[side_menu_font_color]" value="%s" style="background:%s" />default: #000',
+			isset( $this->options['side_menu_font_color'] ) ? esc_attr( $this->options['side_menu_font_color']) : '#000',
+			isset( $this->options['side_menu_font_color'] ) ? esc_attr( $this->options['side_menu_font_color']) : '#000'
+		);
+	}
+	
+	public function create_side_menu_hover_font_color_field() {
+		printf(
+			'<input type="text" id="side_menu_hover_font_color" class="color-picker" name="encad_options[side_menu_hover_font_color]" value="%s" style="background:%s" />default: #515151',
+			isset( $this->options['side_menu_hover_font_color'] ) ? esc_attr( $this->options['side_menu_hover_font_color']) : '#515151',
+			isset( $this->options['side_menu_hover_font_color'] ) ? esc_attr( $this->options['side_menu_hover_font_color']) : '#515151'
+		);
+	}
+	
+	public function create_side_menu_active_font_color_field() {
+		printf(
+			'<input type="text" id="side_menu_active_font_color" class="color-picker" name="encad_options[side_menu_active_font_color]" value="%s" style="background:%s" />default: #337ab7',
+			isset( $this->options['side_menu_active_font_color'] ) ? esc_attr( $this->options['side_menu_active_font_color']) : '#337ab7',
+			isset( $this->options['side_menu_active_font_color'] ) ? esc_attr( $this->options['side_menu_active_font_color']) : '#337ab7'
+		);
+	}
+	
+	public function create_side_menu_font_size_field() {
+		printf(
+			'<input type="text" id="side_menu_font_size" name="encad_options[side_menu_font_size]" value="%s" />px default: 16px',
+			isset( $this->options['side_menu_font_size'] ) ? esc_attr( $this->options['side_menu_font_size']) : '16'
+		);
+	}
+	
+	public function create_side_menu_list_style_select() {
+			echo '<select id="side_menu_list_style" name="encad_options[side_menu_list_style]">';
+				echo '<option value="none" '.selected( $this->options["side_menu_list_style"], "none" ).'>none</option>';
+				echo '<option value="circle" '.selected( $this->options["side_menu_list_style"], "circle" ).'>circle</option>';
+				echo '<option value="disc" '.selected( $this->options["side_menu_list_style"], "disc" ).'>disc</option>';
+				echo '<option value="square" '.selected( $this->options["side_menu_list_style"], "square" ).'>square</option>';
+			echo '</select>';
+	}
+	
+	public function create_side_menu_list_style_media_browser_field() {
+		printf(
+			'<div><img src="%s" style="max-width: 200px"/> recommended resolution: 12x12px</div>
+			<input type="text" id="side_menu_list_style_image_url" name="encad_options[side_menu_list_style_image_url]" value="%s"/>
+			<a href="#" id="side_menu_list_style_image" class="button image_picker">Select Image</a><br>(replaces List Style)',
+			isset( $this->options['side_menu_list_style_image_url'] ) ? esc_attr( $this->options['side_menu_list_style_image_url']) : '',
+			isset( $this->options['side_menu_list_style_image_url'] ) ? esc_attr( $this->options['side_menu_list_style_image_url']) : ''
+		);
+	}
+	
+	/**
 	* Main Page
 	*/
 	
@@ -731,11 +911,26 @@ class encadTemplateOptions
 		);
 	}
 	
+	public function create_shadow_checkbox() {
+		printf(
+			'<input type="checkbox" id="shadow" name="encad_options[shadow]" %s />',
+			checked( isset( $this->options['shadow'] ), true, false )
+		);
+	}
+	
 	public function create_main_color_field() {
 		printf(
 			'<input type="text" id="main_color" class="color-picker" name="encad_options[main_color]" value="%s" style="background:%s" />default: #eee',
 			isset( $this->options['main_color'] ) ? esc_attr( $this->options['main_color']) : '#eeeeee',
 			isset( $this->options['main_color'] ) ? esc_attr( $this->options['main_color']) : '#eeeeee'
+		);
+	}
+	
+	public function create_title_font_color_field() {
+		printf(
+			'<input type="text" id="title_font_color" class="color-picker" name="encad_options[title_font_color]" value="%s" style="background:%s" />default: #000',
+			isset( $this->options['title_font_color'] ) ? esc_attr( $this->options['title_font_color']) : '#000',
+			isset( $this->options['title_font_color'] ) ? esc_attr( $this->options['title_font_color']) : '#000'
 		);
 	}
 

@@ -43,8 +43,8 @@ html, body {
 	background-repeat: no-repeat;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
-	-o-background-size: cover;
 	background-size: cover;
+	background-position: bottom;
 }
 
 .logo {
@@ -62,7 +62,9 @@ html, body {
 .logo > a > img {
 	max-height: 200px;
 	vertical-align: middle;
-	padding: 20px;
+	padding: 15px 2px 5px 5px;
+	max-width:100%;
+	max-height:100%;
 }
 
 /* nav-bar */
@@ -70,6 +72,7 @@ html, body {
 .navbar {
 	border-radius: 0px;
 	margin-bottom: 0px;
+	min-height: 20px;
 }
 
 .navbar-nav>li>a  {
@@ -81,7 +84,7 @@ html, body {
 }
 
 .navblock {
-	margin-top: 80px;
+	margin-top: 100px;
 }
 
 /* main content styles */
@@ -162,7 +165,6 @@ html, body {
 
 @media (min-width: 768px) {
 	.navbar-side {
-		list-style-type: square;
 		list-style-position: inside;
 	}
 
@@ -194,7 +196,7 @@ html, body {
 	.navblock {
 		background-color: transparent;
 	}
-	.hidden-on-768 {
+	.side-menu-badge {
 		visibility: hidden;
 		display: none;
 	}

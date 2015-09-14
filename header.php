@@ -56,7 +56,7 @@
 		</div><!--/.container -->	
 	</div><!--./bs-docs-header-->
  
-	<nav class="navbar navbar-inverse <?php if($options['side_menu'] == 'on')echo ('hidden-on-768') ?>" role="navigation">
+	<nav id="top-navigation" class="navbar navbar-inverse <?php if($options['side_menu'] == 'on')echo ('side-menu-badge') ?>" role="navigation">
 		<?php 
 			if ($options['side_menu'] != 'on') {
 				printf(
