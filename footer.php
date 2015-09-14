@@ -1,6 +1,6 @@
 <?php
 /**
- * Description: Default Footer template to display widgets and copyright
+ * Description: Default Footer template to display socials and copyright
  * @author Bernd Fecht (encad consulting GmbH)
  * @package WordPress
  * @subpackage encadTemplate

@@ -9,19 +9,13 @@
 
 <?php get_header(); ?>
 
-<div class="main-content">
-		<div class="jumbotron <?php if($options['wrapped'] == 'on')echo ('wrapped') ?>">
-			<div class="container">
-				<?php
-					if (have_posts()) : while (have_posts()) : the_post();
-
-							get_template_part('content', get_post_format());
-
-						endwhile;
-					endif;
-				?>
-			</div>
-		</div>
-</div><!--./main-content -->
+	<?php 
+		if ($options['side_menu']) {
+			require_once(get_template_directory().'/side-menu-layout.php');
+		}
+		else {
+			require_once(get_template_directory().'/main-layout.php');
+		}
+	?>	
 
 <?php get_footer(); ?>

@@ -13,26 +13,31 @@
 <html <?php language_attributes();?>>
 
 <head>	
-	<?php global $template_dir;
-		$template_dir = get_template_directory_uri(); 
-	?>
-	
 	<!-- get options -->
 	<?php 		
 		global $options;
 		$options = get_option( 'encad_options' );
-		require_once ( get_template_directory() . '/options-queries.php');
+		require_once ( get_template_directory() . '/includes/options-queries.php');
+	?>
+	
+	<?php
+		$analytics = $options["google_analytics"];
+		if ($analytics != "") {
+			echo $analytics;
+		}
 	?>
 	
 	<title><?php wp_title('&mdash;', true, 'right'); ?><?php bloginfo('name'); ?></title>
 	<meta charset="<?php bloginfo('charset'); ?>">
 	
 	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1" />	
+	
+	<link href='https://fonts.googleapis.com/css?family=Roboto:500,500italic' rel='stylesheet' type='text/css'>
+	
 	<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
-
 
 <header id="header">
 
@@ -51,28 +56,36 @@
 		</div><!--/.container -->	
 	</div><!--./bs-docs-header-->
  
-	<nav class="navbar navbar-inverse" role="navigation">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
+	<nav id="top-navigation" class="navbar navbar-inverse <?php if($options['side_menu'] == 'on')echo ('side-menu-badge') ?>" role="navigation">
+		<?php 
+			if ($options['side_menu'] != 'on') {
+				printf(
+					'
+					<div class="navbar-header">
+					  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					  </button>
+					</div>
+					'
+				);
+			}
+		?>
         <div id="navbar" class="navbar-collapse collapse  <?php if($options['header_wrapped'] == 'on')echo ('wrapped') ?>">
 			<!-- register nav_walker menu -->
-			<?php                
-				if ( has_nav_menu( 'main-menu' ) ) {      
-					wp_nav_menu( array(
-						'menu'       => 'main-menu',
-						'theme_location' => 'main-menu',
-						'depth'      => 2,
-						'container'  => false,
-						'menu_class' => 'nav navbar-nav',
-						'fallback_cb' => 'wp_page_menu',
-						'walker' => new wp_bootstrap_navwalker())
-					); 				
+			<?php 
+				if ($options['side_menu'] != 'on' && has_nav_menu( 'main-menu' ) ) {   
+						wp_nav_menu( array(
+							'menu'       => 'main-menu',
+							'theme_location' => 'main-menu',
+							'depth'      => 2,
+							'container'  => false,
+							'menu_class' => 'nav navbar-nav',
+							'fallback_cb' => 'wp_page_menu',
+							'walker' => new wp_bootstrap_navwalker())
+						); 
 				}
 			?>			
         </div><!--/.navbar-collapse -->
