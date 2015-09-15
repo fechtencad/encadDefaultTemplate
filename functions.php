@@ -247,4 +247,3 @@ function bootstrapwp_breadcrumbs()
 }
 
 ?>
-
