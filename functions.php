@@ -5,9 +5,7 @@
  * @package WordPress
  * @subpackage encadTemplate
  */
-?>
-
-<?php 
+ 
 /**
  * Load Theme Options 
  *
