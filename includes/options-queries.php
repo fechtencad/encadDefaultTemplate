@@ -15,7 +15,7 @@ function set_header_styles() {
 	$options = get_option( 'encad_options' );
 	
 	$color = $options['header_color'];
-	$image_color_url = $options['header_background_image_color_url'];
+	$image_color_url = $options['header_background_color_image_url'];
 	$image_url = $options['header_background_image_url'];
 	$logo_url = $options['header_logo_image_url'] ;
 	$height = $options['header_height'];
