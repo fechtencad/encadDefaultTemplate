@@ -55,20 +55,18 @@ html, body {
 .logo {
 	height: 100%;
 	float: left;	
-	padding: 15px 2px 5px 5px;
+	padding: 15px 2px 5px 5px;	
+	max-width: 300px;
+	max-height: 100%;
 }
 
-.helper {
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
+.logo a {
+	height: 100%;
+	width: 100%;
 }
 
-.logo > a > img {
-	max-height: 200px;
-	vertical-align: middle;
-	max-width:100%;
-	max-height:100%;
+.logo-image {
+	vertical-align: middle;	
 }
 
 /* nav-bar */
@@ -213,5 +211,10 @@ html, body {
 	.side-menu-badge {
 		visibility: hidden;
 		display: none;
+	}
+	.logo {
+		width: 100%;
+		float: none;
+		max-width: none;
 	}
 }

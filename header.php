@@ -47,8 +47,7 @@
 				<div class="slider-area" id="header-slider">
 					<div class="logo" id="logo">	
 						<a href="<?php echo home_url( '/' ); ?>" rel="home">
-							<span class="helper"></span>
-								<img class="logo-image"/>
+							<img class="logo-image img-responsive"/>
 						</a>
 					</div><!-- ./logo -->
 				</div><!-- ./slider-area -->
