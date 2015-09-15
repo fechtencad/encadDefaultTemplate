@@ -22,7 +22,7 @@
 			<div class="col-md-8">
 				<?php if (have_posts()) : ?>
 					 <header class="post-title">
-						 <h1><?php printf( __('Search Results for: %s', 'bootstrapwp'),'<span>' . get_search_query() . '</span>'); ?></h1>
+						 <h1><?php printf( __('Suchergebnisse für: %s', 'bootstrapwp'),'<span>' . get_search_query() . '</span>'); ?></h1>
 					 </header>
 
 				  <?php while (have_posts()) : the_post(); ?>
@@ -36,11 +36,11 @@
 				<?php else: ?>
 					<div class="col-md-8" >
 						<header class="post-title">
-						<h1><?php _e('No Results Found', 'bootstrapwp'); ?></h1>
+						<h1><?php _e('Keine Ergebnisse gefunden!', 'bootstrapwp'); ?></h1>
 						</header>
 						<p class="lead">
 							<?php _e(
-								'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps you should try again with a different search term.',
+								'Es sieht so aus, als könnten wir nicht das finden, das Sie suchen. Bitte versuchen Sie es mit einem anderen Suchbegriff.',
 								'bootstrapwp'); ?>
 						</p>
 					</div>

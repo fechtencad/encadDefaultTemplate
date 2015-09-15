@@ -22,11 +22,11 @@
 	   <div class="content">
 
 				<header class="page-title">
-					<h1><?php _e('This is Embarrassing', 'bootstrapwp'); ?></h1>
+					<h1><?php _e('Das ist uns aber peinlich!', 'bootstrapwp'); ?></h1>
 				</header>
 
 				<p class="lead"><?php _e(
-					'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching, or one of the links below, can help.',
+					'Die gewünschte Seite wurde leider nicht gefunden. Vielleicht kann Ihnen die Suche oder die unten angegebenen Links weiterhelfen.',
 					'bootstrapwp'
 				); ?></p>
 
