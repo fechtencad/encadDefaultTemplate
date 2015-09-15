@@ -6,18 +6,21 @@ und Beiträge NICHT mit enthalten sind.
 Das Theme verfügt über eine Optionen-Seite, die unter Settings in WP zu finden ist:
 
 ![alt tag](https://cloud.githubusercontent.com/assets/8614916/9871356/69db3a0a-5b93-11e5-81c9-4a8d690b9ee5.png)
+
 Abbildung 1: Theme Options im Settings-Menü unter WP
 
 Dort können Einstellungen zu Farbe und Form der Website vorgenommen werden:
 
 
 ![alt tag](https://cloud.githubusercontent.com/assets/8614916/9871358/6f715b8e-5b93-11e5-81ec-6d19722d8e11.png)
+
 Abbildung 2: Options-Page des encadDefaultTemplate
 
 Standardmäßig wird das Template wie hier gezeigt, nur ohne Menü und Header-Bilder initialisiert:
 
 
 ![alt tag](https://cloud.githubusercontent.com/assets/8614916/9871360/72a74250-5b93-11e5-952c-ba2d523c210a.png)
+
 Abbildung 3: Preview
 
 # encad consulting GmbH
