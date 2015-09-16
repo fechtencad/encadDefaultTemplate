@@ -47,13 +47,11 @@
 				<div class="slider-area" id="header-slider">
 					<div class="container-fluid">
 						<div class="row">
-							<div class="logo col-md-4" id="logo">	
-								<a href="<?php echo home_url( '/' ); ?>" rel="home">
-									<img src="<?php if ($options['header_logo_image_url'] != ""){ echo( $options['header_logo_image_url'] ); } ?>" class="logo-image img-responsive"/>
-								</a>
-							</div><!-- ./logo -->
-						</div>
-					</div>
+							<div class="logo-container col-md-4">
+								<a class="logo" href="<?php echo home_url( '/' ); ?>" rel="home"></a>
+							</div><!-- ./logo-container -->
+						</div><!-- ./row -->
+					</div><!-- ./container-fluid -->
 				</div><!-- ./slider-area -->
 			</div><!-- ./header-images -->
 		</div><!--/.container -->	
