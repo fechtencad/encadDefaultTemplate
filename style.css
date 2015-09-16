@@ -88,8 +88,18 @@ html, body {
 }
 
 .menu-block {
-	padding: 100px 0px 0px 0px;
+	padding: 90px 5px 20px 20px;
 }
+
+.navbar-inverse .navbar-side>li {
+	clear: left;
+	margin: 2px;	
+	display: list-item;
+}
+.navbar-inverse .navbar-side > li > a {
+	padding: 0;
+}
+
 /* breadcrumb */
 
 .breadcrumb {
@@ -176,17 +186,7 @@ html, body {
 	}
 }
 
-@media (min-width: 768px) {
-	.navbar-side {
-		list-style-position: inside;
-	}
-
-	.navbar-inverse .navbar-side>li {
-		clear: left;
-		margin: 2px;	
-		display: list-item;
-	}
-
+@media (min-width: 768px) { 
 	.navbar-inverse .navbar-side.navbar-nav>.open>a, .navbar-inverse .navbar-side.navbar-nav>.active>a {
 		background-image: none !important;
 		background-color: transparent !important;
@@ -199,6 +199,7 @@ html, body {
 		box-shadow: none !important;
 		border: none !important;		
 	}
+
 }
 
 @media (max-width: 768px) {
