@@ -52,21 +52,19 @@ html, body {
 	background-position: bottom;
 }
 
-.logo {
+.slider-area .container-fluid {
 	height: 100%;
-	float: left;	
-	padding: 15px 2px 5px 5px;	
-	max-width: 300px;
-	max-height: 100%;
 }
 
-.logo a {
+.slider-area .container-fluid  .row {
 	height: 100%;
-	width: 100%;
 }
 
 .logo-image {
 	vertical-align: middle;	
+	height: auto;
+	padding: 30px 2px 5px 5px;
+	max-height: 100%;
 }
 
 /* nav-bar */
@@ -85,10 +83,13 @@ html, body {
 	font-size: 16px;
 }
 
-.navblock {
-	margin-top: 100px;
+.navbar-inverse .navbar-side>li  >a {
+	word-wrap: break-word;
 }
 
+.menu-block {
+	padding: 100px 0px 0px 0px;
+}
 /* breadcrumb */
 
 .breadcrumb {
@@ -182,8 +183,7 @@ html, body {
 
 	.navbar-inverse .navbar-side>li {
 		clear: left;
-		margin: 2px;
-		height: 40px;	
+		margin: 2px;	
 		display: list-item;
 	}
 
@@ -216,5 +216,8 @@ html, body {
 		width: 100%;
 		float: none;
 		max-width: none;
+	}
+	.menu-block {
+		padding: 0;
 	}
 }

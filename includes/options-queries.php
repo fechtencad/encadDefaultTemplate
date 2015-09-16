@@ -17,7 +17,6 @@ function set_header_styles() {
 	$color = $options['header_color'];
 	$image_color_url = $options['header_background_color_image_url'];
 	$image_url = $options['header_background_image_url'];
-	$logo_url = $options['header_logo_image_url'] ;
 	$height = $options['header_height'];
 	$shadow = $options['header_shadow'];
 	
@@ -31,11 +30,7 @@ function set_header_styles() {
 			}
 			.slider-area { 
 				background-image: url($image_url);
-			}
-			
-			.logo-image { 
-				content: url($logo_url);
-			}			
+			}		
 		</style>
 		"
 	);	
