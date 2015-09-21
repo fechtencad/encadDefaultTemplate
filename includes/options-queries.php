@@ -190,21 +190,23 @@ function set_side_menu_styles() {
 	printf(
 		"
 		<style>
-			.navbar-side >li>a {
-				color: $font_color !important;
-				font-size: ".$font_size."px;
-			}
-			
-			.navbar-side >li>a:hover, .navbar-side >li>a:focus {
-				color: $hover_font_color !important;
-			}
-			
-			.navbar-side .active>a, .navbar-side .active>a:hover, .navbar-side .active>a:focus {
-				color: $active_font_color !important;
-			}
-			
-			.navbar-side {
-				list-style-type: $list_style;
+			@media (min-width: 768px) {
+				.navbar-side >li>a {
+					color: $font_color !important;
+					font-size: ".$font_size."px;
+				}
+				
+				.navbar-side >li>a:hover, .navbar-side >li>a:focus {
+					color: $hover_font_color !important;
+				}
+				
+				.navbar-side .active>a, .navbar-side .active>a:hover, .navbar-side .active>a:focus {
+					color: $active_font_color !important;
+				}
+				
+				.navbar-side {
+					list-style-type: $list_style;
+				} 
 			}
 		</style>
 		"
