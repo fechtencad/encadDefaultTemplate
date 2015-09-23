@@ -144,7 +144,7 @@ html, body {
 	margin-top: 0px;
 }
 
-.page-content img {
+.page-content img,.page-content  iframe, .page-content div {
 	max-width: 100% !important;
 	height: auto !important;
 }
