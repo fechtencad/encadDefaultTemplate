@@ -45,12 +45,13 @@
 		<div class="container">
 			<div class="header-images <?php if($options['header_wrapped'] == 'on')echo ('wrapped') ?>">
 				<div class="slider-area" id="header-slider">
-					<div class="logo" id="logo">	
-						<a href="<?php echo home_url( '/' ); ?>" rel="home">
-							<span class="helper"></span>
-								<img class="logo-image"/>
-						</a>
-					</div><!-- ./logo -->
+					<div class="container-fluid">
+						<div class="row">
+							<div class="logo-container col-md-4">
+								<a class="logo" href="<?php echo home_url( '/' ); ?>" rel="home"></a>
+							</div><!-- ./logo-container -->
+						</div><!-- ./row -->
+					</div><!-- ./container-fluid -->
 				</div><!-- ./slider-area -->
 			</div><!-- ./header-images -->
 		</div><!--/.container -->	

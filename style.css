@@ -23,6 +23,11 @@ html, body {
 	min-height: 100px;
 	max-height: 500px;
 	height: 200px;
+	background-repeat: no-repeat !important;
+	-webkit-background-size: cover !important;
+	-moz-background-size: cover !important;
+	background-size: cover !important;
+	background-position: bottom !important;
 }
 
 .bs-docs-header > .container {
@@ -47,24 +52,27 @@ html, body {
 	background-position: bottom;
 }
 
+.slider-area .container-fluid {
+	height: 100%;
+}
+
+.slider-area .container-fluid  .row {
+	height: 100%;
+}
+
+.logo-container {
+	height: 100%;
+	padding: 15px 15px 15px 15px;
+}
+
 .logo {
 	height: 100%;
-	max-width: 50%;
-	float: left;
-}
-
-.helper {
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-}
-
-.logo > a > img {
-	max-height: 200px;
-	vertical-align: middle;
-	padding: 15px 2px 5px 5px;
-	max-width:100%;
-	max-height:100%;
+	background-repeat: no-repeat;
+	-webkit-background-size: contain;
+	-moz-background-size: contain;
+	background-size: contain;
+	background-position: bottom;
+	display: block;
 }
 
 /* nav-bar */
@@ -83,8 +91,21 @@ html, body {
 	font-size: 16px;
 }
 
-.navblock {
-	margin-top: 100px;
+.navbar-inverse .navbar-side>li  >a {
+	word-wrap: break-word;
+}
+
+.menu-block {
+	padding: 90px 5px 20px 20px;
+}
+
+.navbar-inverse .navbar-side>li {
+	clear: left;
+	margin: 2px;	
+	display: list-item;
+}
+.navbar-inverse .navbar-side > li > a {
+	padding: 0;
 }
 
 /* breadcrumb */
@@ -121,6 +142,11 @@ html, body {
 
 .page-header {
 	margin-top: 0px;
+}
+
+.page-content img,.page-content  iframe, .page-content div {
+	max-width: 100% !important;
+	height: auto !important;
 }
 
 /* footer styles */
@@ -173,18 +199,7 @@ html, body {
 	}
 }
 
-@media (min-width: 768px) {
-	.navbar-side {
-		list-style-position: inside;
-	}
-
-	.navbar-inverse .navbar-side>li {
-		clear: left;
-		margin: 2px;
-		height: 40px;	
-		display: list-item;
-	}
-
+@media (min-width: 768px) { 
 	.navbar-inverse .navbar-side.navbar-nav>.open>a, .navbar-inverse .navbar-side.navbar-nav>.active>a {
 		background-image: none !important;
 		background-color: transparent !important;
@@ -197,6 +212,7 @@ html, body {
 		box-shadow: none !important;
 		border: none !important;		
 	}
+
 }
 
 @media (max-width: 768px) {
@@ -209,5 +225,13 @@ html, body {
 	.side-menu-badge {
 		visibility: hidden;
 		display: none;
+	}
+	.logo {
+		width: 100%;
+		float: none;
+		max-width: none;
+	}
+	.menu-block {
+		padding: 0;
 	}
 }

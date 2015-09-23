@@ -17,7 +17,7 @@ function set_header_styles() {
 	$color = $options['header_color'];
 	$image_color_url = $options['header_background_color_image_url'];
 	$image_url = $options['header_background_image_url'];
-	$logo_url = $options['header_logo_image_url'] ;
+	$logo_url = $options['header_logo_image_url'];
 	$height = $options['header_height'];
 	$shadow = $options['header_shadow'];
 	
@@ -31,11 +31,10 @@ function set_header_styles() {
 			}
 			.slider-area { 
 				background-image: url($image_url);
+			}				
+			.logo {
+				background-image: url($logo_url);
 			}
-			
-			.logo-image { 
-				content: url($logo_url);
-			}			
 		</style>
 		"
 	);	
@@ -191,21 +190,23 @@ function set_side_menu_styles() {
 	printf(
 		"
 		<style>
-			.navbar-side >li>a {
-				color: $font_color !important;
-				font-size: ".$font_size."px;
-			}
-			
-			.navbar-side >li>a:hover, .navbar-side >li>a:focus {
-				color: $hover_font_color !important;
-			}
-			
-			.navbar-side .active>a, .navbar-side .active>a:hover, .navbar-side .active>a:focus {
-				color: $active_font_color !important;
-			}
-			
-			.navbar-side {
-				list-style-type: $list_style;
+			@media (min-width: 768px) {
+				.navbar-side >li>a {
+					color: $font_color !important;
+					font-size: ".$font_size."px;
+				}
+				
+				.navbar-side >li>a:hover, .navbar-side >li>a:focus {
+					color: $hover_font_color !important;
+				}
+				
+				.navbar-side .active>a, .navbar-side .active>a:hover, .navbar-side .active>a:focus {
+					color: $active_font_color !important;
+				}
+				
+				.navbar-side {
+					list-style-type: $list_style;
+				} 
 			}
 		</style>
 		"
