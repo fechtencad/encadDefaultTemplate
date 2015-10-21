@@ -11,10 +11,12 @@
 */
 
 html, body {
-    margin: 0;
+    margin: 0 auto;
 	padding: 0;
     height: 100%;
-	font-family: 'Roboto', sans-serif;	
+	width: 100%;
+	max-width: 100%;
+	font-family: 'Roboto', sans-serif;
 }
 
 /* header styles */
@@ -130,6 +132,7 @@ html, body {
 	margin-bottom: 0px;
 	min-height: 100%;
 	padding: 10px 15px;
+	overflow-x: hidden;
 }
 
 .jumbotron p {
@@ -144,10 +147,20 @@ html, body {
 	margin-top: 0px;
 }
 
-.page-content img,.page-content  iframe, .page-content div {
+.page-content img {
 	max-width: 100% !important;
 	height: auto !important;
+	margin: 5px;
+	padding: 5px;
 }
+
+img.alignright {float:right; margin:0 0 1em 1em}
+img.alignleft {float:left; margin:0 1em 1em 0}
+img.aligncenter {display: block; margin-left: auto; margin-right: auto}
+a img.alignright {float:right; margin:0 0 1em 1em}
+a img.alignleft {float:left; margin:0 1em 1em 0}
+a img.aligncenter {display: block; margin-left: auto; margin-right: auto}
+
 
 /* footer styles */
 
@@ -215,7 +228,7 @@ html, body {
 
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px) {	
 	.jumbotron {
 		padding: 0;
 	}
@@ -233,5 +246,26 @@ html, body {
 	}
 	.menu-block {
 		padding: 0;
+	}
+}
+
+@media only screen and (max-width: 480px) {
+	.page-content img.alignright {
+		width: 100%;
+	}
+	.page-content img.alignleft {
+		width: 100%;
+	}
+	.page-content img.aligncenter {
+		width: 100%;
+	}
+	.page-content a img.alignright {
+		width: 100%;
+	}
+	.page-content a img.alignleft {
+		width: 100%;
+	}
+	.page-content a img.aligncenter {
+		width: 100%;
 	}
 }

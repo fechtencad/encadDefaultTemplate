@@ -32,19 +32,19 @@
 						}
 						
 						if (($i = $options['pinterest']) != "") {
-							echo "<a href='$i'><img title='Google+' src='$template_dir/img/$button_type-socials/pinterest.png' alt='Google+' width='30' height='30' /></a>";
+							echo "<a href='$i'><img title='Pinterest' src='$template_dir/img/$button_type-socials/pinterest.png' alt='Pinterest' width='30' height='30' /></a>";
 						}
 						
 						if (($i = $options['youtube']) != "") {
-							echo "<a href='$i'><img title='Google+' src='$template_dir/img/$button_type-socials/youtube.png' alt='Google+' width='30' height='30' /></a>";
+							echo "<a href='$i'><img title='Youtube' src='$template_dir/img/$button_type-socials/youtube.png' alt='Youtube' width='30' height='30' /></a>";
 						}
 						
 						if (($i = $options['email']) != "") {
-							echo "<a href='mailto:$i'><img title='Google+' src='$template_dir/img/$button_type-socials/email.png' alt='Google+' width='30' height='30' /></a>";
+							echo "<a href='mailto:$i'><img title='Email' src='$template_dir/img/$button_type-socials/email.png' alt='Email' width='30' height='30' /></a>";
 						}
 						
 						if (($i = $options['rss']) != "") {
-							echo "<a href='$i'><img title='Google+' src='$template_dir/img/$button_type-socials/rss.png' alt='Google+' width='30' height='30' /></a>";
+							echo "<a href='$i'><img title='RSS' src='$template_dir/img/$button_type-socials/rss.png' alt='RSS' width='30' height='30' /></a>";
 						}						
 					?>
 				</div>
